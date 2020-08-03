@@ -24,6 +24,6 @@
 
     move() {
         //default creature can't move, so usually overridden
-        return [0.0, 0.0];
+        return this._location;
     }
 }
