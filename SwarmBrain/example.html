@@ -1,0 +1,62 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <!--<script src="Scripts/jquery-3.4.1.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<script src="Scripts/jcanvas.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
+    <script src="SwarmJS/creature.js"></script>
+    <script src="SwarmJS/ant.js"></script>
+    <script src="SwarmJS/environment.js"></script>
+    <script src="SwarmJS/antScape.js"></script>
+</head>
+<body>
+
+    <canvas id="canvasy" width="200" height="200">
+    </canvas>
+
+    <script>
+
+        var dim = 600;
+        var num = 200;
+        var environment = new AntScape(dim, dim, num);
+        var canvas = document.getElementById('canvasy');
+        var context = canvas.getContext('2d');
+        function myTimer() {
+            for (i = 0; i < num; i++) {
+                var creature = environment.swarm[i];
+                creature.move();
+            }
+            //When CDN for canvasjs works
+            //$("#canvasy").clearCanvas();
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (i = 0; i < num; i++) {
+                var ant = environment.swarm[i];
+
+                //When CDN for canvasjs works
+                //$("#canvasy").drawPolygon({
+                //    draggable: true,
+                //    fillStyle: ant.hasFood === false ? "#6c3" : "#ccc2b3",
+                //    x: ant.X, y: ant.Y,
+                //    radius: 5, sides: 5
+                //});
+
+                context.beginPath();
+                context.rect(ant.X - 5, ant.Y - 5, ant.X, ant.Y);
+                context.stroke();
+            }
+        }
+
+        $(document).ready(function () {
+            $("#canvasy").width(dim);
+            $("#canvasy").height(dim);
+            setInterval(myTimer, 30);
+        });
+    </script>
+</body>
+</html>
