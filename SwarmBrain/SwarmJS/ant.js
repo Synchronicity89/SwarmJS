@@ -54,9 +54,9 @@
             for (var x = -1; x < 2; x++) {
                 for (var y = -1; y < 2; y++) {
                     if (x === 0 && y === 0) continue;
-                    if (environment.scent[x + Math.floor(this.X), y + Math.floor(this.Y)] === undefined) environment.scent[x + Math.floor(this.X), y + Math.floor(this.Y)] = 0.0;
-                    if (environment.scent[x + Math.floor(this.X), y + Math.floor(this.Y)] > mostScent.val) {
-                        mostScent.val = environment.scent[x + Math.floor(this.X), y + Math.floor(this.Y)];
+                    if (environment.scent[x + Math.floor(this.X)][ y + Math.floor(this.Y)] === undefined) environment.scent[x + Math.floor(this.X)][ y + Math.floor(this.Y)] = 0.0;
+                    if (environment.scent[x + Math.floor(this.X)][ y + Math.floor(this.Y)] > mostScent.val) {
+                        mostScent.val = environment.scent[x + Math.floor(this.X)][ y + Math.floor(this.Y)];
                         mostScent.X = x + Math.floor(this.X); mostScent.Y = y + Math.floor(this.Y);
                     }
                 }
