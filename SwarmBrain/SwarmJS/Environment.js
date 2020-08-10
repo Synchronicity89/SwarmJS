@@ -13,6 +13,16 @@
         }
     }
 
+    createMatrix(N, M) {
+        var matrix = new Array(N); // Array with initial size of N, not fixed!
+
+        for (var i = 0; i < N; ++i) {
+            matrix[i] = new Array(M);
+        }
+
+        return matrix;
+    }
+
     render() {
 
     }

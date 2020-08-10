@@ -13,7 +13,7 @@
     constructor(width, height, num, context) {
         super([width, height], num, context);
 
-        this._scent = new Array(width, height);
+        this._scent = super.createMatrix(width, height);
         //TODO: perhaps lay scent down as soon as creatures created.
         this._nest = {}; this._nest.X = 10; this._nest.Y = 10;
         this._food = {}; this._food.X = 190; this._food.Y = 190;
@@ -36,7 +36,7 @@
     render() {
         //When CDN for canvasjs works
         //$("#canvasy").clearCanvas();
-        this._context.clearRect(0, 0, canvas.width, canvas.height);
+        //this._context.clearRect(0, 0, canvas.width, canvas.height);
 
         for (i = 0; i < this._num; i++) {
             var ant = environment.swarm[i];
@@ -51,10 +51,11 @@
 
     setScent(X, Y, Amount) {
         if (X > this._width || Y > this._height) return;
-        this._scent[X, Y] += Amount;
-        this._context.fillStyle = "#333333";
+        this._scent[Math.floor(X)][Math.floor(Y)] += Amount;
+        this._context.fillStyle = "#ffffff";
         this._context.beginPath();
-        this._context.fillRect(X - 1, Y - 1, 2, 2);
+        this._context.fillRect(X - 2, Y - 2, 3, 3);
+        this._context.rect(X - 2, Y - 2, 3, 3);
         this._context.stroke();
     }
 
