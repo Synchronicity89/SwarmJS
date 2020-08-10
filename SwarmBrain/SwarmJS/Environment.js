@@ -13,6 +13,10 @@
         }
     }
 
+    render() {
+
+    }
+
     get dimensions() {
         return this._dimensions;
     }

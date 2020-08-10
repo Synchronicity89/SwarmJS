@@ -23,33 +23,15 @@
 
         var dim = 600;
         var num = 200;
-        var environment = new AntScape(dim, dim, num);
         var canvas = document.getElementById('canvasy');
         var context = canvas.getContext('2d');
+        var environment = new AntScape(dim, dim, num, context);
         function myTimer() {
             for (i = 0; i < num; i++) {
                 var creature = environment.swarm[i];
                 creature.move();
             }
-            //When CDN for canvasjs works
-            //$("#canvasy").clearCanvas();
-            context.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (i = 0; i < num; i++) {
-                var ant = environment.swarm[i];
-
-                //When CDN for canvasjs works
-                //$("#canvasy").drawPolygon({
-                //    draggable: true,
-                //    fillStyle: ant.hasFood === false ? "#6c3" : "#ccc2b3",
-                //    x: ant.X, y: ant.Y,
-                //    radius: 5, sides: 5
-                //});
-
-                context.beginPath();
-                context.rect(ant.X - 5, ant.Y - 5, ant.X, ant.Y);
-                context.stroke();
-            }
+            environment.render();
         }
 
         $(document).ready(function () {

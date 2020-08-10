@@ -48,7 +48,7 @@
             //if fresh scent in the way, detect trail direction
             //if trail direction is orthagonal, simply keep going and cross the trail.
 
-            environment.scent[this.X, this.Y] += 1.0;
+            environment.setScent(this.X, this.Y, 1.0);
         } else if (this.X > 0 && this.Y > 0 & this.X < 199 && this.Y < 199) {
             var mostScent = {}; mostScent.X = 2; mostScent.Y = 2; mostScent.val = -1.0;
             for (var x = -1; x < 2; x++) {
